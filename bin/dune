@@ -1,0 +1,4 @@
+(executable
+ (public_name derive_rsm)
+ (name main)
+ (libraries derive_rsm))

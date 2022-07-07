@@ -1,0 +1,14 @@
+(** @canonical Derive_rsm.Events *)
+module Events = Derive_rsm__Events
+
+
+(** @canonical Derive_rsm.Model *)
+module Model = Derive_rsm__Model
+
+
+(** @canonical Derive_rsm.Pairing *)
+module Pairing = Derive_rsm__Pairing
+
+
+(** @canonical Derive_rsm.SessionTypes *)
+module SessionTypes = Derive_rsm__SessionTypes
