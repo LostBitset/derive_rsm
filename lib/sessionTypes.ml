@@ -4,21 +4,24 @@ module Make (Msg : sig
     val compare_labels : label -> label -> int
   end) = struct
 
-  module RespSet(T : sig type t end)(Msg : sig
-      type label
-      val compare_labels : label -> label -> int
-    end) = Set.Make(struct
-      type t = Msg.label * T.t
-      let compare (a, _ : t) (b, _ : t) = Msg.compare_labels a b
-    end)
+  module rec Types : sig
+    type session =
+      | Send of Msg.t * session
+      | Recv of Msg.t * session
+      | Branch of resp list
+      | Select of resp list
+    and resp = Msg.label * session Lazy.t
+  end = Types
+  
+  and RespSet : Set.S with type elt = Types.resp = Set.Make(struct
+    
+    type t = Types.resp
 
-  type session =
-    | Send of Msg.t * session
-    | Recv of Msg.t * session
-    | Branch of RespSet()(Msg).t
-    | Select of resp list
+    let compare (x, _ : t) (y, _ : t) = Msg.compare_labels x y
 
-  and resp = Msg.label * session Lazy.t
+  end)
+
+  open Types
 
   let rec dual = function
     | Send (x, n) -> Recv (x, n)

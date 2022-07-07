@@ -3,7 +3,7 @@
 # Shared cache: disabled
 # Workspace root: /home/lpc/Research/ocaml/derive_rsm
 # Auto-detected concurrency: 16
-$ /home/lpc/.opam/4.14.0/bin/ocamlc.opt -config > /tmp/dune_6de829_output
+$ /home/lpc/.opam/4.14.0/bin/ocamlc.opt -config > /tmp/dune_07cc66_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -111,17 +111,11 @@ $ /home/lpc/.opam/4.14.0/bin/ocamlc.opt -config > /tmp/dune_6de829_output
 #      }
 #  }
 $ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamldep.opt -modules -impl lib/sessionTypes.ml) > _build/default/lib/.derive_rsm.objs/sessionTypes.ml.d
-$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.derive_rsm.objs/byte -intf-suffix .ml -no-alias-deps -opaque -open Derive_rsm -o lib/.derive_rsm.objs/byte/derive_rsm__SessionTypes.cmo -c -impl lib/sessionTypes.ml)
-> File "lib/sessionTypes.ml", line 27, characters 45-47:
-> 27 |     | Branch xs -> Select (List.map dualResp xs)
->                                                   ^^
-> Error: This expression has type RespSet(Msg).t
->        but an expression was expected of type 'a list
-[2]
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I lib/.derive_rsm.objs/byte -no-alias-deps -opaque -open Derive_rsm -o lib/.derive_rsm.objs/byte/derive_rsm__SessionTypes.cmo -c -impl lib/sessionTypes.ml)
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/derive_rsm.cma lib/.derive_rsm.objs/byte/derive_rsm.cmo lib/.derive_rsm.objs/byte/derive_rsm__SessionTypes.cmo lib/.derive_rsm.objs/byte/derive_rsm__Pairing.cmo lib/.derive_rsm.objs/byte/derive_rsm__Model.cmo lib/.derive_rsm.objs/byte/derive_rsm__Events.cmo)
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I bin/.main.eobjs/byte -I lib/.derive_rsm.objs/byte -no-alias-deps -opaque -o bin/.main.eobjs/byte/dune__exe__Main.cmi -c -intf bin/main.mli)
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.derive_rsm.objs/byte -I lib/.derive_rsm.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
 $ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I lib/.derive_rsm.objs/byte -I lib/.derive_rsm.objs/native -intf-suffix .ml -no-alias-deps -opaque -open Derive_rsm -o lib/.derive_rsm.objs/native/derive_rsm__SessionTypes.cmx -c -impl lib/sessionTypes.ml)
-> File "lib/sessionTypes.ml", line 27, characters 45-47:
-> 27 |     | Branch xs -> Select (List.map dualResp xs)
->                                                   ^^
-> Error: This expression has type RespSet(Msg).t
->        but an expression was expected of type 'a list
-[2]
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -a -o lib/derive_rsm.cmxa lib/.derive_rsm.objs/native/derive_rsm.cmx lib/.derive_rsm.objs/native/derive_rsm__SessionTypes.cmx lib/.derive_rsm.objs/native/derive_rsm__Pairing.cmx lib/.derive_rsm.objs/native/derive_rsm__Model.cmx lib/.derive_rsm.objs/native/derive_rsm__Events.cmx)
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -shared -linkall -I lib -o lib/derive_rsm.cmxs lib/derive_rsm.cmxa)
+$ (cd _build/default && /home/lpc/.opam/4.14.0/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o bin/main.exe lib/derive_rsm.cmxa bin/.main.eobjs/native/dune__exe__Main.cmx)
