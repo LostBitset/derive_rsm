@@ -100,3 +100,7 @@ and Derivation : DERIVATION = struct
       Select (Session.RespSet.map Session.dualResp @@ SThunk.force s_thunk)
 
 end
+
+let runtimeSession bindings =
+  Derivation.respFor bindings ~binding:BindingRef.top
+    (lazy Session.RespSet.empty)
