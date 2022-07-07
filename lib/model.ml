@@ -106,3 +106,24 @@ let runtimeSession bindings =
   let empty = lazy Session.RespSet.empty in
   let topResp = Derivation.respFor bindings ~binding:BindingRef.top empty in
   Session.Types.Select (Session.RespSet.singleton topResp)
+
+let test = 
+  let aux1 = Events.BindingRef.of_int 1 in
+  let example : bindings_t =
+    { acc = (BindingRefMap.add aux1 [])
+              (BindingRefMap.singleton Events.BindingRef.top [])
+    ; cond_acc = (BindingRefMap.add aux1 [])
+                  (BindingRefMap.singleton Events.BindingRef.top [aux1]) }
+  in
+  let res = runtimeSession example in
+  let list1 =
+    match res with
+    | Session.Types.Select set -> Session.RespSet.elements set
+    | _ -> failwith "not select with 1 element"
+  in
+  let forced1 =
+    match list1 with
+    | [(_, x)] -> Lazy.force x
+    | _ -> failwith "not list of one 2-tuple"
+  in
+  forced1
