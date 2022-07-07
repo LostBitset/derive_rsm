@@ -8,8 +8,8 @@ module Make (Msg : sig
     type session =
       | Send of Msg.t * session
       | Recv of Msg.t * session
-      | Branch of resp list
-      | Select of resp list
+      | Branch of RespSet.t 
+      | Select of RespSet.t
     and resp = Msg.label * session Lazy.t
   end = Types
   
@@ -26,8 +26,8 @@ module Make (Msg : sig
   let rec dual = function
     | Send (x, n) -> Recv (x, n)
     | Recv (x, n) -> Send (x, n)
-    | Branch xs -> Select (List.map dualResp xs)
-    | Select xs -> Branch (List.map dualResp xs)
+    | Branch xs -> Select (RespSet.map dualResp xs)
+    | Select xs -> Branch (RespSet.map dualResp xs)
 
   and dualResp (l, next) = (l, Lazy.map dual next)
 
