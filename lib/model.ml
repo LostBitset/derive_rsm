@@ -102,5 +102,6 @@ and Derivation : DERIVATION = struct
 end
 
 let runtimeSession bindings =
-  Derivation.respFor bindings ~binding:BindingRef.top
-    (lazy Session.RespSet.empty)
+  let empty = lazy Session.RespSet.empty in
+  let topResp = Derivation.respFor bindings ~binding:BindingRef.top empty in
+  Session.Types.Select (Session.RespSet.singleton topResp)
