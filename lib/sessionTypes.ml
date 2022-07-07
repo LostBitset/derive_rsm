@@ -21,7 +21,7 @@ module Make (Msg : sig
 
   end)
 
-  open Types
+  open Types;;
 
   let rec dual = function
     | Send (x, n) -> Recv (x, n)

@@ -1,4 +1,4 @@
-open Events
+open Events;;
 
 type model_label =
   | EventOccured of BindingRef.t
@@ -57,7 +57,8 @@ module rec SThunk : S_THUNK = struct
       if x == y
       then force @@ InContext (bindings, innermost)
       else forceInner bindings outermost
-    | _ -> assert false
+    | _ as noIdempotency ->
+      forceInner bindings noIdempotency
 
   and forceInner bindings x =
     match x with
